@@ -1,4 +1,4 @@
-#include "model/smap.h"
+#include "smap.h"
 
 static Smap m;
 Smap *SmapInit(int max_x, int max_y) {

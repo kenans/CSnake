@@ -1,10 +1,10 @@
 #ifndef _FOOD_H_
 #define _FOOD_H_
 
-typedef Food {
+typedef struct{
   int x;
   int y;
-};
+} Food;
 
 Food *FoodInit(int x, int y);
 void FoodRenew(int x, int y);

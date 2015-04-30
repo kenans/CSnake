@@ -1,4 +1,4 @@
-#include "model/snake.h"
+#include "snake.h"
 
 #ifndef TRUE
 #define TRUE 1
@@ -6,14 +6,18 @@
 #ifndef FALSE
 #define FALSE 0
 #endif  // FALSE
+#ifndef BOOL
+#define BOOL char
+#endif // BOOL
 
 #define MAX_LEN     64
 #define INIT_LEN    5
 #define INIT_SPEED  1
 static Snake s;
-static boolean to_turn = FALSE;
+static BOOL to_turn = FALSE;
 static Dir next_dir = RIGHT;
-static boolean to_grow = FALSE;
+static BOOL to_grow = FALSE;
+static Node trace_[MAX_LEN];
 
 Snake *SnakeInit(int x, int y) {
   int i;
@@ -39,6 +43,7 @@ Snake *SnakeInit(int x, int y) {
    *        |
    *       len = 8
    */
+  s.trace = trace_;
   for (i = s.len-1; i >= 0; --i) {
     s.trace[i].x = x - i;
     s.trace[i].y = y;
@@ -52,12 +57,12 @@ void SnakeMove(void) {
     to_turn = FALSE;
   }
   if (!to_grow) {
-    (tail == s.trace+MAX_LEN-1) ? (tail = s.trace) : (++tail);
+    (s.tail == s.trace+MAX_LEN-1) ? (s.tail = s.trace) : (++s.tail);
   } else {
     to_grow = FALSE;
   }
   temp = s.head;
-  (head == s.trace+MAX_LEN-1) ? (head = s.trace) : (++head);
+  (s.head == s.trace+MAX_LEN-1) ? (s.head = s.trace) : (++s.head);
   switch (s.dir) {
   case UP:
     s.head->x = temp->x;

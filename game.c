@@ -3,8 +3,9 @@
 #include "model/smap.h"
 #include "model/food.h"
 // TODO
-#include "view/paint.h"
-#include "tools/getkey.h"
+//#include "port/port.h"
+//#include "view/paint.h"
+//#include "controller/key.h"
 
 #define S_INIT_X 6
 #define S_INIT_Y 1
@@ -14,7 +15,9 @@
 static Snake  *ps;
 static Smap   *pm;
 static Food   *pf;
-static Paint  *pp;
+//static Paint  *pp;
+
+static void GameOver(void);
 
 void GameInit(void) {
   ps = SnakeInit(
@@ -36,12 +39,14 @@ void GameThread(void) {
       SnakeGrow();
       // TODO
       // Renew a random food
-      FoodRenew(x, y);
+//    FoodRenew(x, y);
     }
     // Move
     // TODO: Key pressed?
-    dir = ...;
-    SnakeMove(dir);
+//  dir = ...;
+    dir = GetKey();
+    SnakeTurn(dir);
+    SnakeMove();
     // Paint
 
     // Dead ?
@@ -54,6 +59,7 @@ void GameThread(void) {
       break;
     }
     // Delay
+    PortDelay(50);
   }
 }
 static void GameOver(void) {

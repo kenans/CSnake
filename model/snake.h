@@ -1,17 +1,17 @@
 #ifndef _SNAKE_H_
 #define _SNAKE_H_
 
-typedef struct Node {
+typedef struct {
   int x;
   int y;
-};
-typedef enum Dir {
+} Node;
+typedef enum {
   UP    = -1,
   DOWN  = 1,
   LEFT  = -2,
   RIGHT = 2
-};
-typedef struct Snake {
+} Dir;
+typedef struct {
   int len;
   int speed;
 
@@ -19,8 +19,8 @@ typedef struct Snake {
 
   Node *head;
   Node *tail;
-  Node trace[MAX_LEN];
-};
+  Node *trace;
+} Snake;
 
 // APIs
 Snake *SnakeInit(int x, int y);
