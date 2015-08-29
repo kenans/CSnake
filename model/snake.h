@@ -1,6 +1,10 @@
 #ifndef _SNAKE_H_
 #define _SNAKE_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef struct {
   int x;
   int y;
@@ -27,4 +31,8 @@ Snake *SnakeInit(int x, int y);
 void SnakeMove(void);
 void SnakeTurn(Dir dir);
 void SnakeGrow(void);
+
+#ifdef __cplusplus
+}
+#endif
 #endif // _SNAKE_H_
