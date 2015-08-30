@@ -25,6 +25,10 @@ int main(int argc, char *argv[]) {
   SnakeGrow();
   SnakeMove();
   ForeachSnakeNode(printNode);
+  printf("Iter test...\n");
+  for (it = IterBegin(); it != IterEnd(); it = IterNext(it)) {
+     printNode(it->x, it->y);
+  }
   return 0;
 }
 

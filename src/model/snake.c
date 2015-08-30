@@ -112,3 +112,17 @@ void ForeachSnakeNode(void (*callback_func)(int, int)) {
     p == s.trace ? p = s.trace + MAX_LEN - 1 : p--;
   }
 }
+
+Node* IterNext(Node *n) {
+  n == s.trace ? n = s.trace + MAX_LEN - 1 : n--;
+  return n;
+}
+Node* IterBegin() {
+  return s.head;
+}
+Node* IterEnd() {
+  if (s.tail != s.trace)
+    return s.tail - 1;
+  return s.trace + MAX_LEN - 1;
+}
+

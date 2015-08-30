@@ -33,6 +33,9 @@ void SnakeTurn(Dir dir);
 void SnakeGrow(void);
 int InSnake(int x, int y);
 void ForeachSnakeNode(void (*callback_func)(int, int));
+Node* IterNext(Node *n);
+Node* IterBegin();
+Node* IterEnd();
 
 #ifdef __cplusplus
 }
