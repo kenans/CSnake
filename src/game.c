@@ -32,6 +32,7 @@ void GameInit(void) {
 }
 void GameThread(void) {
   Dir dir;
+  int x, y;
   while (1) {
     // Grow ?
     if (ps->head->x == pf->x &&
@@ -39,7 +40,11 @@ void GameThread(void) {
       SnakeGrow();
       // TODO
       // Renew a random food
-//    FoodRenew(x, y);
+      do {
+        x = PortRandInt();
+        y = PortRandInt();
+      } while (InSnake(x, y));
+      FoodRenew(x, y);
     }
     // Move
     // TODO: Key pressed?

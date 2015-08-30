@@ -9,6 +9,7 @@
 #define PORT_H_
 
 //void PortDelay(int ms);
+//int PortRandInt();
 //#define PortDelay(ms)
 
 #endif /* PORT_H_ */

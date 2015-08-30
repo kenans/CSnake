@@ -5,7 +5,7 @@ void KeyInit(void) {
 
 }
 
-Dir GetKey(void) {
+int GetKey(void) {
   Dir dir;
   return dir;
 }

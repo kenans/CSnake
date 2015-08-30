@@ -7,7 +7,7 @@
 #define FALSE 0
 #endif  // FALSE
 #ifndef BOOL
-#define BOOL char
+#define BOOL int
 #endif // BOOL
 
 #define MAX_LEN     64
@@ -44,7 +44,7 @@ Snake *SnakeInit(int x, int y) {
    *       len = 8
    */
   s.trace = trace_;
-  for (i = s.len-1; i >= 0; --i) {
+  for (i = s.len - 1; i >= 0; --i) {
     s.trace[i].x = x - i;
     s.trace[i].y = y;
   }
@@ -57,12 +57,12 @@ void SnakeMove(void) {
     to_turn = FALSE;
   }
   if (!to_grow) {
-    (s.tail == s.trace+MAX_LEN-1) ? (s.tail = s.trace) : (++s.tail);
+    (s.tail == s.trace + MAX_LEN - 1) ? (s.tail = s.trace) : (++s.tail);
   } else {
     to_grow = FALSE;
   }
   temp = s.head;
-  (s.head == s.trace+MAX_LEN-1) ? (s.head = s.trace) : (++s.head);
+  (s.head == s.trace + MAX_LEN - 1) ? (s.head = s.trace) : (++s.head);
   switch (s.dir) {
   case UP:
     s.head->x = temp->x;
@@ -93,4 +93,14 @@ void SnakeTurn(Dir dir) {
 void SnakeGrow(void) {
   ++s.len;
   to_grow = TRUE;
+}
+BOOL InSnake(int x, int y) {
+  Node *p = s.head;
+  int i;
+  for (i = 0; i < s.len; ++i) {
+    p == s.trace ? p = s.trace + MAX_LEN - 1 : p--;
+    if (x == p->x && y == p->y)
+      return TRUE;
+  }
+  return FALSE;
 }
