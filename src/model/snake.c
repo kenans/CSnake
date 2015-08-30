@@ -19,6 +19,9 @@ static Dir next_dir = RIGHT;
 static BOOL to_grow = FALSE;
 static Node trace_[MAX_LEN];
 
+/**
+ *  Initialize a snake, head at (x, y)
+ */
 Snake *SnakeInit(int x, int y) {
   int i;
   s.trace = trace_;
@@ -94,25 +97,31 @@ void SnakeGrow(void) {
   ++s.len;
   to_grow = TRUE;
 }
+
+/**
+ *  If Node(x, y) in the snake's trace, returns 1;
+ */
 int InSnake(int x, int y) {
-  Node *p = s.head;
-  int i;
-  for (i = 0; i < s.len; ++i) {
-    if (x == p->x && y == p->y)
+  Node *it;
+  for (it = IterBegin(); it != IterEnd(); it = IterNext(it)) {
+    if (x == it->x && y == it->y)
       return TRUE;
-    p == s.trace ? p = s.trace + MAX_LEN - 1 : p--;
   }
   return FALSE;
 }
+/**
+ *  For each node of snake, runs call-back function
+ */
 void ForeachSnakeNode(void (*callback_func)(int, int)) {
-  Node *p = s.head;
-  int i;
-  for (i = 0; i < s.len; ++i) {
-    callback_func(p->x, p->y);
-    p == s.trace ? p = s.trace + MAX_LEN - 1 : p--;
+  Node *it;
+  for (it = IterBegin(); it != IterEnd(); it = IterNext(it)) {
+    callback_func(it->x, it->y);
   }
 }
 
+/**
+ *  Iteration Methods
+ */
 Node* IterNext(Node *n) {
   n == s.trace ? n = s.trace + MAX_LEN - 1 : n--;
   return n;
