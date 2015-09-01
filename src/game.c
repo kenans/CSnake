@@ -53,12 +53,13 @@ void GameThread(void) {
     SnakeTurn(dir);
     SnakeMove();
     // Paint
-
+    //
     // Dead ?
     if (ps->head->x >= pm->max_x ||
         ps->head->y >= pm->max_y ||
         ps->head->x <= 0 ||
-        ps->head->y <= 0
+        ps->head->y <= 0 ||
+        // TODO
         ) {
       GameOver();
       break;

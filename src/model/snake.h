@@ -9,6 +9,7 @@ typedef struct {
   int x;
   int y;
 } Node;
+typedef Node* SnakeIter;
 typedef enum {
   UP    = -1,
   DOWN  = 1,
@@ -33,9 +34,9 @@ void SnakeTurn(Dir dir);
 void SnakeGrow(void);
 int InSnake(int x, int y);
 void ForeachSnakeNode(void (*callback_func)(int, int));
-Node* IterNext(Node *n);
-Node* IterBegin();
-Node* IterEnd();
+SnakeIter IterNext(SnakeIter n);
+SnakeIter IterBegin();
+SnakeIter IterEnd();
 
 #ifdef __cplusplus
 }

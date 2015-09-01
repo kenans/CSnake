@@ -7,6 +7,7 @@ void printNode(int x, int y) {
 int main(int argc, char *argv[]) {
   int x, y;
   int i;
+  SnakeIter it;
   Snake *s = SnakeInit(10, 10);
   for (i = 0 ; i < 10; ++i) {
 	  x = 13 - i;

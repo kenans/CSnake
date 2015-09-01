@@ -102,7 +102,7 @@ void SnakeGrow(void) {
  *  If Node(x, y) in the snake's trace, returns 1;
  */
 int InSnake(int x, int y) {
-  Node *it;
+  SnakeIter it;
   for (it = IterBegin(); it != IterEnd(); it = IterNext(it)) {
     if (x == it->x && y == it->y)
       return TRUE;
@@ -113,7 +113,7 @@ int InSnake(int x, int y) {
  *  For each node of snake, runs call-back function
  */
 void ForeachSnakeNode(void (*callback_func)(int, int)) {
-  Node *it;
+  SnakeIter it;
   for (it = IterBegin(); it != IterEnd(); it = IterNext(it)) {
     callback_func(it->x, it->y);
   }
@@ -122,14 +122,14 @@ void ForeachSnakeNode(void (*callback_func)(int, int)) {
 /**
  *  Iteration Methods
  */
-Node* IterNext(Node *n) {
+SnakeIter IterNext(SnakeIter n) {
   n == s.trace ? n = s.trace + MAX_LEN - 1 : n--;
   return n;
 }
-Node* IterBegin() {
+SnakeIter IterBegin() {
   return s.head;
 }
-Node* IterEnd() {
+SnakeIter IterEnd() {
   if (s.tail != s.trace)
     return s.tail - 1;
   return s.trace + MAX_LEN - 1;
