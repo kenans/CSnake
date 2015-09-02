@@ -41,16 +41,15 @@ void GameThread(void) {
       // TODO
       // Renew a random food
       do {
-        x = PortRandInt();
-        y = PortRandInt();
+        x = PortRand(M_MAX_X);
+        y = PortRand(M_MAX_Y);
       } while (InSnake(x, y));
       FoodRenew(x, y);
     }
     // Move
     // TODO: Key pressed?
-//  dir = ...;
-    dir = GetKey();
-    SnakeTurn(dir);
+    //dir = GetKey();
+    //SnakeTurn(dir);
     SnakeMove();
     // Paint
     //
