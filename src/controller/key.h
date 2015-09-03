@@ -6,7 +6,7 @@ extern "C" {
 #endif
 
 #include "model/snake.h"
-Dir GetKey(void);
+Dir GetDirection(void);
 
 #ifdef __cplusplus
 }

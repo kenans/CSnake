@@ -15,7 +15,13 @@ void PortDelay(int ms) {
   usleep(ms * 1000);
 }
 int PortRand(int max) {
-  srand(time(NULL) * time(NULL));
+  srand(time(NULL) * time(NULL) * max);
   return rand() % max;
+}
+int PortGetKey(void) {
+
+}
+void PortPaintPoint(int x, int y) {
+
 }
 #endif

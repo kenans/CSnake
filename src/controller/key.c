@@ -1,8 +1,7 @@
 #include "key.h"
 #include "port/port.h"
 
-Dir GetKey(void) {
-  Dir dir;
+Dir GetDirection(void) {
   switch (PortGetKey()) {
     case 0: 
       return UP;

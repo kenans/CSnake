@@ -15,6 +15,8 @@ extern "C" {
 void PortDelay(int ms);
 int PortRand(int max);
 int PortGetKey(void); // UP, DOWN, LEFT, RIGHT: 0, 1, 2, 3
+void PortPaintPoint(int x, int y);
+void PortPaintLine(int x1, int y1, int x2, int y2);
 
 #ifdef __cplusplus
 }
