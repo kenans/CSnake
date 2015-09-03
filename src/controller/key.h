@@ -1,7 +1,15 @@
 #ifndef _KEY_H_
 #define _KEY_H_
 
-void KeyInit(void);
-int GetKey(void);
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "model/snake.h"
+Dir GetKey(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* _KEY_H_ */
