@@ -1,4 +1,4 @@
-#include "snake.h"
+#include "model/snake.h"
 #include "stdio.h"
 
 void printNode(int x, int y) {
