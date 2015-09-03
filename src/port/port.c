@@ -7,7 +7,7 @@
 
 #include "port.h"
 
-#ifdef __APPLE__
+#if defined __APPLE__ || __linux__ || __unix__
 #include "unistd.h"
 #include "stdlib.h"
 #include "time.h"
@@ -86,4 +86,7 @@ void PortPaintClear(void) {
 void PortPaintEnd(void) {
   endwin();
 }
+#elif defined _WIN32
+#else
+#error "error: undefined system"
 #endif
