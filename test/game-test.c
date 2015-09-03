@@ -1,4 +1,5 @@
-#include "game.h"
+#include <stdio.h>
+#if 0
 #include "model/snake.h"
 #include "model/smap.h"
 #include "model/food.h"
@@ -17,6 +18,9 @@ static Food   *pf;
 
 static void GameOver(void);
 static int Hit(void);
+void PaintNode(int x, int y) {
+  printf("(x, y)=(%d, %d)\n", x, y);
+}
 
 void GameInit(void) {
   ps = SnakeInit(
@@ -30,6 +34,7 @@ void GameInit(void) {
         M_MAX_Y/2);
   KeyInit();
   DrawInit(M_MAX_X, M_MAX_Y);
+  //puts("Game start...");
 }
 void GameThread(void) {
   int x, y;
@@ -43,12 +48,14 @@ void GameThread(void) {
     if (ps->head->x == pf->x &&
         ps->head->y == pf->y) {
       SnakeGrow();
+      //puts("Hit food, snake grown");
       // Renew a random food
       do {
         x = 1 + PortRand(M_MAX_X - 1);
         y = 1 + PortRand(M_MAX_Y - 1);
       } while (InSnake(x, y));
       FoodRenew(x, y);
+      printf("Food renewed at (%d, %d)\n", x, y);
     }
     // Dead ?
     if (Hit()) {
@@ -65,6 +72,7 @@ void GameThread(void) {
   }
 }
 static void GameOver(void) {
+  //puts("Gameover");
   DrawEnd();
 }
 static int Hit(void) {
@@ -81,4 +89,13 @@ static int Hit(void) {
       return 2;
   return 0;
 }
+#else
+#include "game.h"
+#endif
 
+int main() {
+  GameInit();
+  GameThread();
+
+  return 0;
+}
