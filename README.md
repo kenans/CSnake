@@ -5,10 +5,16 @@ This is a snake game implemented using C programming language
 ### Linux/Unix/MacOS
 On these systems, GUI created using libcurses, which should be installed before building.
 
-To install libcurses, on Debian/Ubuntu system, run,
+To install libcurses,
+* Debian/Ubuntu
 ```
 $ sudo apt-get update
 $ sudo apt-get install libcurses5-dev
+```
+
+* Redhat/Fedora/CentOS
+```
+sudo yum install ncurses-devel
 ```
 
 1. Create a new folder named 'build'

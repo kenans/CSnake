@@ -8,8 +8,8 @@
 
 #define S_INIT_X 6
 #define S_INIT_Y 1
-#define M_MAX_X  16
-#define M_MAX_Y  12
+#define M_MAX_X  30
+#define M_MAX_Y  18
 
 static Snake  *ps;
 static Smap   *pm;
