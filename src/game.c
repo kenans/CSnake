@@ -44,10 +44,14 @@ void GameThread(void) {
         ps->head->y == pf->y) {
       SnakeGrow();
       // Renew a random food
-      do {
-        x = 1 + PortRand(M_MAX_X - 1);
-        y = 1 + PortRand(M_MAX_Y - 1);
-      } while (InSnake(x, y));
+      x = 1 + PortRand(M_MAX_X - 1);
+      y = 1 + PortRand(M_MAX_Y - 1);
+      while (InSnake(x, y)) {
+        x += 1;
+        x = x % (M_MAX_X - 1) + 1;
+        y += 2; 
+        y = y % (M_MAX_Y - 1) + 1;
+      }
       FoodRenew(x, y);
     }
     // Dead ?
