@@ -94,6 +94,8 @@ void SnakeTurn(Dir dir) {
   }
 }
 void SnakeGrow(void) {
+  if (s.len + 1 == MAX_LEN)
+    return;
   ++s.len;
   to_grow = TRUE;
 }
