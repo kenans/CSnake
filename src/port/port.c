@@ -87,6 +87,46 @@ void PortPaintEnd(void) {
   endwin();
 }
 #elif defined _WIN32
+// Win32
+#elif defined __AVR__
+// Arduino
+#include "Arduino.h"
+#include "u8glib.h"
+
+static U8GLIB_PCD8544 u8g(13, 11, 10, 9, 8);  // SCK, MOSI, CS, A0, Reset
+
+void PortDelay(int ms) {
+  delay(ms);
+}
+int PortRand(int max) {
+  randomSeed(analogRead(0));  // Attention: analog 0 should NOT be connected
+  return random(max);
+}
+void PortKeyInit(void) {
+
+}
+int PortGetKey(void) { // UP, DOWN, LEFT, RIGHT: 0, 1, 2, 3
+
+}
+void PortPaintInit(int max_x, int max_y) {
+  u8g_begin(&u8g);
+
+}
+void PortPaintEnd(void) {
+
+}
+void PortPaintPoint(int x, int y) {
+  u8g_drawPixel(&u8g, x, y);
+}
+void PortPaintLine(int x1, int y1, int x2, int y2) {
+  u8g_drawLine(&u8g, x1, y1, x2, y2);
+}
+void PortRepaint(void) {
+  u8g_firstPage(&u8g);
+}
+void PortPaintClear(void) {
+
+}
 #else
 #error "error: undefined system"
 #endif
